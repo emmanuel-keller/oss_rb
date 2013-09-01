@@ -64,6 +64,7 @@ module Oss
     # http://github.com/jaeksoft/opensearchserver/wiki/Document-put-JSON
     def index!
       api_put_json "services/rest/index/#{@name}/document", @documents
+      @documents = []
     end
 
     # Execute a search (using pattern)
