@@ -77,7 +77,7 @@ describe Oss::Index do
       @index.set_field_default_unique('user', 'id')
 
       (1..15).each do |i|
-        doc = Oss::Document.new()
+        doc = Oss::Document.new
         doc.fields << Oss::Field.new('id', "#{i}")
         doc.fields << Oss::Field.new('user', "john#{i}")
         @index.documents << doc

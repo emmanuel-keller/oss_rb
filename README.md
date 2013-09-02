@@ -43,7 +43,7 @@ index.set_field_default_unique('name', 'id')
 
 Put a document in the index
 ```ruby
-doc = Oss::Document.new()
+doc = Oss::Document.new
 doc.fields << Oss::Field.new('id', "1")
 doc.fields << Oss::Field.new('name', "john smith")
 index.documents << doc
@@ -57,7 +57,9 @@ result = index.search_field(
 		'searchFields' => [ {'field' => 'name', 'phrase'=>true, 'boost' => 1.0} ],
 		'start' => 0,
 		'rows' => 10,
-        'returnedFields' => ['id', 'name'] })
+        'returnedFields' => ['id', 'name']
+    }
+)
 ```
 
 It is possible to store a search template
@@ -67,7 +69,9 @@ index.search_store_template_field('fieldsearch',
 		'searchFields' => [ {'field' => 'name', 'phrase'=>true, 'boost' => 1.0} ],
 		'start' => 0,
 		'rows' => 10,
-        'returnedFields' => ['id', 'name'] });
+        'returnedFields' => ['id', 'name']
+    }
+);
  ```
      
 Use the stored search template to make a search
