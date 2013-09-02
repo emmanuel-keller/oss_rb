@@ -22,7 +22,7 @@ Or install it yourself as:
 
 Obtain a client instance
 ```ruby
-index = Oss::Index.new(@index_name, 'http://localhost:8080')
+index = Oss::Index.new('my_index', 'http://localhost:8080')
 ```
 
 Create an index
@@ -33,7 +33,11 @@ index.create('EMPTY_INDEX')
 Create some fields
 ```ruby
 index.set_field({'name' => 'id', 'indexed' => 'YES'})
-index.set_field({'name' => 'name', 'analyzer' => 'StandardAnalyzer', 'stored' => 'YES', 'indexed' => 'YES'})
+index.set_field(
+    {	'name' => 'name',
+	'analyzer' => 'StandardAnalyzer',
+	'stored' => 'YES',
+	'indexed' => 'YES'})
 ```
 
 Set the default field, and the primary key
@@ -57,7 +61,7 @@ result = index.search_field(
 		'searchFields' => [ {'field' => 'name', 'phrase'=>true, 'boost' => 1.0} ],
 		'start' => 0,
 		'rows' => 10,
-        'returnedFields' => ['id', 'name'] })
+ 		'returnedFields' => ['id', 'name'] })
 ```
 
 It is possible to store a search template
@@ -67,7 +71,7 @@ index.search_store_template_field('fieldsearch',
 		'searchFields' => [ {'field' => 'name', 'phrase'=>true, 'boost' => 1.0} ],
 		'start' => 0,
 		'rows' => 10,
-        'returnedFields' => ['id', 'name'] });
+		'returnedFields' => ['id', 'name'] });
  ```
      
 Use the stored search template to make a search
