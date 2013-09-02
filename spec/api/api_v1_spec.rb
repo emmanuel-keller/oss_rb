@@ -95,11 +95,30 @@ describe Oss::Index do
       result['documents'].length.should == 10
 
       @index.search_store_template_pattern('patternsearch', params);
-      result = @index.search_template_pattern('patternsearch', params);
+      result = @index.search_template_pattern('patternsearch', {'query' => 'user:j*'});
       result['numFound'].should == 15
       result['documents'].length.should == 10
 
-      @index.search_template_delete('search');
+      @index.search_template_delete('patternsearch');
+
+      params = {
+        'query' => 'john1',
+        'searchFields' => [ {'field' => 'user', 'phrase'=>true, 'boost' => 1.0} ],
+        'start' => 0,
+        'rows' => 10,
+        "returnedFields" => ['id', 'user']
+      }
+      result= @index.search_field(params);
+      result['numFound'].should == 1
+      result['documents'].length.should == 1
+
+      @index.search_store_template_field('fieldsearch', params);
+      result = @index.search_template_field('fieldsearch', {'query' => 'john2'});
+      result['numFound'].should == 1
+      result['documents'].length.should == 1
+
+      @index.search_template_delete('fieldsearch');
+
     end
   end
 
