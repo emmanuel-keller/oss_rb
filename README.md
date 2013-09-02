@@ -22,7 +22,7 @@ Or install it yourself as:
 
 Obtain a client instance
 ```ruby
-index = Oss::Index.new 'my_index', 'http://localhost:8080'
+index = Oss::Index.new('my_index', 'http://localhost:8080')
 ```
 
 Create an index
@@ -32,7 +32,7 @@ index.create 'EMPTY_INDEX'
 
 Create some fields
 ```ruby
-index.set_field {'name' => 'id', 'indexed' => 'YES'}
+index.set_field({'name' => 'id', 'indexed' => 'YES'})
 index.set_field(
 	{	'name' => 'name',
 		'analyzer' => 'StandardAnalyzer',
@@ -44,7 +44,7 @@ index.set_field(
 
 Set the default field, and the primary key
 ```ruby
-index.set_field_default_unique 'name', 'id' 
+index.set_field_default_unique('name', 'id')
 ```
 
 Put a document in the index
@@ -82,22 +82,22 @@ index.search_store_template_field('fieldsearch',
      
 Use the stored search template to make a search
 ```ruby
-result = index.search_template_field 'fieldsearch', {'query' => 'john2'}
+result = index.search_template_field('fieldsearch', {'query' => 'john2'})
 ```
 
 Deleting a search template
 ```ruby
-index.search_template_delete 'fieldsearch'
+index.search_template_delete('fieldsearch')
 ```
 
 You may remove documents by value or by query
 ```ruby
-index.delete_document_by_value 'id', 1
-index.delete_document_by_query 'name:john'
+index.delete_document_by_value('id', 1)
+index.delete_document_by_query('name:john')
 ```
 Or remove field
 ```ruby
-index.delete_field 'name'
+index.delete_field('name')
 ```
 
 And finally here is how to delete the index
