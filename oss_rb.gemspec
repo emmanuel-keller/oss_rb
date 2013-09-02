@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["ori@pekelman.com", "ekeller@open-search-server.com"]
   spec.description   = %q{OpenSearchServer Ruby Client}
   spec.summary       = %q{OpenSearchServer Ruby Client}
-  spec.homepage      = "http://open-search-server.com/"
+  spec.homepage      = "http://www.open-search-server.com/"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)
