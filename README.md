@@ -1,8 +1,11 @@
 # oss_rb
 
+A Ruby Client for OpenSearchServer
 
-A very initial Ruby Client for OpenSearchServer (v1.5) http://www.open-search-server.com
+## Requirement
 
+A running OpenSearchServer instance (>= v1.5)
+http://www.open-search-server.com
 
 ## Installation
 
