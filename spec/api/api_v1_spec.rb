@@ -4,7 +4,7 @@ describe Oss::Index do
   before(:all) do
     @index_name = "test_oss_rb"
     @index = Oss::Index.new(@index_name, ENV['OSS_RB_URL'], ENV['OSS_RB_LOGIN'], ENV['OSS_RB_KEY'])
-    @index.delete!
+    @index.delete! if @index.list.include? @index_name
   end
 
   describe '#OssIndex(name)' do
@@ -29,16 +29,16 @@ describe Oss::Index do
     it "delete index" do
       index = Oss::Index.new("DELETE_ME", ENV['OSS_RB_URL'], ENV['OSS_RB_LOGIN'], ENV['OSS_RB_KEY'])
       index.create('EMPTY_INDEX')
-      index.list.should include "DELETE_ME"
+      index.list.should(include, "DELETE_ME")
       index.delete!
-      index.list.should_not include "DELETE_ME"
+      index.list.should_not(include, "DELETE_ME")
     end
   end
 
   describe '#create index' do
     it "create index" do
       @index.create('WEB_CRAWLER') unless @index.list.include? @index_name
-      @index.list.should include @index_name
+      @index.list.should(include, @index_name)
     end
   end
 
