@@ -51,6 +51,12 @@ describe Oss::Index do
       }
       @index.set_field(params)
       params = {
+        'name' => 'id|integer',
+        'stored' => 'NO',
+        'indexed' => 'YES'
+      }
+      @index.set_field(params)
+      params = {
         'name' => 'user',
         'analyzer' => 'StandardAnalyzer',
         'stored' => 'YES',
