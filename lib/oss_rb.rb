@@ -32,14 +32,14 @@ module Oss
     # Create or update the field defined by the given hash
     # http://github.com/jaeksoft/opensearchserver/wiki/Field-create-update
     def set_field(field_params)
-      api_put_json "services/rest/index/#{@name}/field", field_params
+      api_put_json "services/rest/index/#{@name}/field/#{field_params['name']}", field_params
     end
 
     # Set the default field and the unique field
     # http://github.com/jaeksoft/opensearchserver/wiki/Field-set-default-unique
     def set_field_default_unique(default, unique)
       params = { 'unique' => unique, 'default' => default }
-      api_put "services/rest/index/#{@name}/field", '', params
+      api_post "services/rest/index/#{@name}/field", '', params
     end
 
     # Delete the field matching the give name
