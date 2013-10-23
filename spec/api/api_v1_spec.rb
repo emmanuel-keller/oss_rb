@@ -139,12 +139,12 @@ describe Oss::Index do
     it 'index docs, delete document by value' do
       @index.delete_document_by_value('id', 1, 2, 3)
     end
+  end
 
-    describe '#delete document by query' do
-      it 'index docs, delete document by query' do
-        @index.delete_document_by_query('user:john4')
-        @index.delete_document_by_query('user:john5')
-      end
+  describe '#delete document by query' do
+    it 'index docs, delete document by query' do
+      @index.delete_document_by_query('user:john4')
+      @index.delete_document_by_query('user:john5')
     end
   end
 
