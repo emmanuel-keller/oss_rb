@@ -111,7 +111,7 @@ module Oss
     private
 
     def api_get (method, params={})
-      RestClient.get("#{@host}/#{method}", {:accept => :json, :params => params})
+      RestClient.get("#{@host}/#{method}", {:accept => :json, :params => params.merge(@credentials)})
     end
 
     def api_post (method, body="", params={})
